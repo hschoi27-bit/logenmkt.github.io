@@ -35,15 +35,18 @@
 
         /* 아코디언(접기/펴기) UI */
         .accordion { border: 1px solid #e5e7eb; border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
-        .accordion-btn { width: 100%; text-align: left; background: #f9fafb; border: none; padding: 15px; font-size: 15px; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .accordion-btn { width: 100%; text-align: left; background: #f9fafb; border: none; padding: 15px; font-size: 16px; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
         .accordion-btn:hover { background: #f3f4f6; }
         .accordion-content { padding: 0 15px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: #fff; }
         .accordion-content.open { padding: 15px; max-height: 800px; border-top: 1px solid #e5e7eb; }
-        ul { margin: 0; padding-left: 20px; }
-        li { margin-bottom: 8px; font-size: 14px; }
+        
+        /* 아코디언 내부 텍스트 디자인 (요청하신 상위/하위 구성) */
+        .accordion-content p { border-left: 3px solid #3b82f6; color: #3b82f6; padding-left: 12px; margin: 10px 0 15px 0; font-size: 15px; }
+        .accordion-content ul { margin: 0; padding-left: 25px; list-style-type: disc; }
+        .accordion-content li { margin-bottom: 8px; font-size: 15px; color: #333; }
         
         /* 강조 텍스트 및 박스 */
-        .highlight { color: #e11d48; font-weight: bold; background-color: #ffe4e6; padding: 2px 5px; border-radius: 3px; }
+        .highlight { color: #ef4444; /* 배경색 없이 빨간색 글씨만 적용 */ }
         .faq-box { background: #fffbeb; border: 1px solid #fcd34d; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
         .faq-box-text { color: #1e3a8a; font-weight: bold; font-size: 15px; }
 
@@ -83,10 +86,10 @@
         </div>
 
         <div class="accordion">
-            <button class="accordion-btn">고객에게 택배비를 받아야 하나요? <span>▼</span></button>
+            <button class="accordion-btn">“고객에게 택배비를 받아야 하나요?” <span>▼</span></button>
             <div class="accordion-content">
                 <ul>
-                    <li><strong>보내는 분과 받는 분 모두에게 택배비를 받지 마세요.</strong></li>
+                    <li>보내는 분과 받는 분 모두에게 택배비를 받지 마세요.</li>
                     <li>홈픽 접수 건은 [본사신용]으로 처리합니다.</li>
                     <li>집하 · 배송 수수료는 자동으로 정산됩니다.</li>
                 </ul>
@@ -94,11 +97,11 @@
         </div>
 
         <div class="accordion">
-            <button class="accordion-btn">접수한 것보다 물건이 크거나 무거워요. <span>▼</span></button>
+            <button class="accordion-btn">“접수한 것보다 물건이 크거나 무거워요.” <span>▼</span></button>
             <div class="accordion-content">
                 <p>처리 방법은 세 가지 방법이 있고, 다음과 같아요.</p>
                 <ul>
-                    <li>고객에게 이유를 안내해 주세요. [미집하 사유]를 등록하고, 물건은 수거하지 않습니다.</li>
+                    <li>[미집하 사유]를 등록하고, 물건은 수거하지 않습니다. (고객에게 이유를 안내해 주세요.)</li>
                     <li>로젠 개인예약으로 다시 접수를 안내해 주세요. 고객에게 홈픽 접수를 취소 요청 후 로젠 개인예약으로 다시 접수합니다.</li>
                     <li>물건을 그대로 수거합니다. <span class="highlight">(단, 운임은 바꿀 수 없습니다.)</span></li>
                 </ul>
@@ -106,10 +109,10 @@
         </div>
 
         <div class="accordion">
-            <button class="accordion-btn">반찬처럼 취급할 수 없는 식품이 접수됐어요. <span>▼</span></button>
+            <button class="accordion-btn">“반찬처럼 취급할 수 없는 식품이 접수됐어요.” <span>▼</span></button>
             <div class="accordion-content">
                 <ul>
-                    <li><strong>물건을 수거하지 마세요.</strong></li>
+                    <li>물건을 수거하지 마세요.</li>
                     <li>고객에게 홈픽에서 취급할 수 없는 물품이라고 알려주세요.</li>
                     <li>[미집하 사유]를 등록하고, 물건은 수거하지 않습니다.</li>
                 </ul>
@@ -117,17 +120,17 @@
         </div>
     </div>
 
-    <!-- 2️⃣ 물건 수거 화면 (페이지 이동 시 표시) -->
+    <!-- 2️⃣ 물건 수거 화면 -->
     <div id="view-pickup" class="view section">
         <button class="back-btn" onclick="goTo('view-main')">← 메인으로 돌아가기</button>
         <div class="section-title">📦 상황별 안내: 물건 수거</div>
         
         <div class="accordion">
-            <button class="accordion-btn">접수한 것보다 물건이 크거나 무거워요. <span>▼</span></button>
+            <button class="accordion-btn">“접수한 것보다 물건이 크거나 무거워요.” <span>▼</span></button>
             <div class="accordion-content">
                 <p>처리 방법은 세 가지 방법이 있고, 다음과 같아요.</p>
                 <ul>
-                    <li>고객에게 이유를 안내해 주세요. [미집하 사유]를 등록하고, 물건은 수거하지 않습니다.</li>
+                    <li>[미집하 사유]를 등록하고, 물건은 수거하지 않습니다. (고객에게 이유를 안내해 주세요.)</li>
                     <li>로젠 개인예약으로 다시 접수를 안내해 주세요. 고객에게 홈픽 접수를 취소 요청 후 로젠 개인예약으로 다시 접수합니다.</li>
                     <li>물건을 그대로 수거합니다. <span class="highlight">(단, 운임은 바꿀 수 없습니다.)</span></li>
                 </ul>
@@ -135,10 +138,10 @@
         </div>
 
         <div class="accordion">
-            <button class="accordion-btn">반찬처럼 취급할 수 없는 식품이 접수됐어요. <span>▼</span></button>
+            <button class="accordion-btn">“반찬처럼 취급할 수 없는 식품이 접수됐어요.” <span>▼</span></button>
             <div class="accordion-content">
                 <ul>
-                    <li><strong>물건을 수거하지 마세요.</strong></li>
+                    <li>물건을 수거하지 마세요.</li>
                     <li>고객에게 홈픽에서 취급할 수 없는 물품이라고 알려주세요.</li>
                     <li>[미집하 사유]를 등록하고, 물건은 수거하지 않습니다.</li>
                 </ul>
@@ -146,17 +149,17 @@
         </div>
 
         <div class="accordion">
-            <button class="accordion-btn">물건값이 50만 원을 넘어요. <span>▼</span></button>
+            <button class="accordion-btn">“물건값이 50만 원을 넘어요.” <span>▼</span></button>
             <div class="accordion-content">
                 <ul>
-                    <li><strong>정상적으로 수거해 주세요.</strong></li>
+                    <li>정상적으로 수거해 주세요.</li>
                     <li>다만 사고가 났을 때 보상받을 수 있는 금액은 최대 50만 원 입니다.</li>
                 </ul>
             </div>
         </div>
 
         <div class="accordion">
-            <button class="accordion-btn">처음 출력한 운송장을 잃어버렸어요. <span>▼</span></button>
+            <button class="accordion-btn">“처음 출력한 운송장을 잃어버렸어요.” <span>▼</span></button>
             <div class="accordion-content">
                 <ul>
                     <li>새 운송장을 출력한 뒤 물건을 수거해 주세요.</li>
@@ -165,13 +168,13 @@
         </div>
     </div>
 
-    <!-- 3️⃣ 취소/사고 처리 화면 (페이지 이동 시 표시) -->
+    <!-- 3️⃣ 취소/사고 처리 화면 -->
     <div id="view-issue" class="view section">
         <button class="back-btn" onclick="goTo('view-main')">← 메인으로 돌아가기</button>
         <div class="section-title">🚨 상황별 안내: 취소 · 사고 처리</div>
         
         <div class="accordion">
-            <button class="accordion-btn">수거한 물품이 사고가 났어요. <span>▼</span></button>
+            <button class="accordion-btn">“수거한 물품이 사고가 났어요.” <span>▼</span></button>
             <div class="accordion-content">
                 <ul>
                     <li>로젠 개인예약 택배와 같은 절차로 처리합니다.</li>
@@ -182,7 +185,7 @@
         </div>
 
         <div class="accordion">
-            <button class="accordion-btn">고객이 취소하면 언제 환불되나요? <span>▼</span></button>
+            <button class="accordion-btn">“고객이 취소하면 언제 환불되나요?” <span>▼</span></button>
             <div class="accordion-content">
                 <ul>
                     <li>고객이 취소 요청 후 48시간 이상 픽업/배송 흐름이 없으면 자동 취소/환불 처리됩니다.</li>
@@ -200,13 +203,10 @@
 <script>
     // 1. 화면 전환 기능 (페이지 이동 효과)
     function goTo(viewId) {
-        // 모든 화면 숨기기
         document.querySelectorAll('.view').forEach(function(view) {
             view.classList.remove('active');
         });
-        // 선택한 화면만 보이기
         document.getElementById(viewId).classList.add('active');
-        // 스크롤 맨 위로 올리기
         window.scrollTo(0, 0);
     }
 
@@ -217,12 +217,10 @@
             const content = this.nextElementSibling;
             const isOpen = content.classList.contains('open');
             
-            // 다른 열려있는 답변 닫기
             document.querySelectorAll('.accordion-content').forEach(function(item) {
                 item.classList.remove('open');
             });
 
-            // 클릭한 답변 열기/닫기
             if (!isOpen) {
                 content.classList.add('open');
             }
