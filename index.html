@@ -5,139 +5,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>홈픽 현장 가이드</title>
     <style>
-        body { font-family: 'Malgun Gothic', sans-serif; line-height: 1.6; background-color: #f4f7f6; margin: 0; padding: 20px; color: #333; }
-        .container { max-width: 600px; margin: 0 auto; background: #fff; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; }
-        .header { background: #1a56db; color: #fff; padding: 20px; text-align: center; }
-        .header h1 { margin: 0 0 10px 0; font-size: 24px; }
-        .header p { margin: 0; font-size: 14px; opacity: 0.9; }
-        .badge { display: inline-block; background: #ffeb3b; color: #000; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 10px; }
-        .section { padding: 20px; }
-        .section-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #1a56db; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px; }
-        .accordion { border: 1px solid #e5e7eb; border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
-        .accordion-btn { width: 100%; text-align: left; background: #f9fafb; border: none; padding: 15px; font-size: 15px; font-weight: bold; cursor: pointer; outline: none; display: flex; justify-content: space-between; align-items: center; }
-        .accordion-btn:hover { background: #f3f4f6; }
-        .accordion-content { padding: 0 15px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: #fff; }
-        .accordion-content.open { padding: 15px; max-height: 500px; border-top: 1px solid #e5e7eb; }
-        ul { margin: 0; padding-left: 20px; }
-        li { margin-bottom: 8px; font-size: 14px; }
-        .highlight { color: #e11d48; font-weight: bold; background-color: #ffe4e6; padding: 2px 5px; border-radius: 3px; }
-        .faq-box { background: #fffbeb; border: 1px solid #fcd34d; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
-        .faq-box h3 { margin: 0 0 10px 0; color: #b45309; font-size: 16px; text-align: center; }
+        /* 기본 설정 */
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; color: #37352f; line-height: 1.6; margin: 0; padding: 0; background-color: #ffffff; }
+        .page-container { max-width: 700px; margin: 0 auto; padding: 0 20px 100px 20px; position: relative; }
+        
+        /* 상단 노란색 배너 */
+        .top-banner { background-color: #f7cb45; height: 80px; width: 100%; position: absolute; top: 0; left: 0; z-index: -1; }
+        
+        /* 로고 대체 디자인 */
+        .logo-box { display: inline-block; background-color: #ffffff; border: 3px solid #00a9ff; color: #000; font-weight: 900; font-size: 20px; padding: 5px 15px; margin-top: 50px; margin-bottom: 20px; position: relative; border-radius: 4px; box-shadow: 2px 2px 0 #00a9ff; }
+        .logo-box::after { content: ""; position: absolute; bottom: -10px; left: 15px; width: 6px; height: 10px; background-color: #00a9ff; transform: skewX(-20deg); }
+        .logo-box::before { content: ""; position: absolute; bottom: -10px; right: 15px; width: 6px; height: 10px; background-color: #00a9ff; transform: skewX(20deg); }
+
+        /* 타이틀 & 텍스트 */
+        h1 { font-size: 32px; font-weight: 700; margin: 0 0 10px 0; letter-spacing: -0.5px; }
+        .subtitle { font-size: 15px; color: #787774; margin-bottom: 40px; }
+        h2 { font-size: 22px; font-weight: 700; margin: 40px 0 15px 0; border-bottom: 1px solid #ededeb; padding-bottom: 10px; }
+        h3 { font-size: 18px; font-weight: 600; margin: 30px 0 15px 0; }
+        
+        /* 상황별 안내 카드 */
+        .card-grid { display: flex; gap: 15px; margin-bottom: 30px; }
+        .card { flex: 1; border: 1px solid #e9e9e7; border-radius: 6px; padding: 12px 16px; font-size: 14px; font-weight: 600; color: #37352f; display: flex; align-items: center; gap: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.02); transition: background-color 0.2s; }
+        .card:hover { background-color: #f7f7f5; }
+
+        /* 하이라이트 텍스트 */
+        .highlight-wrap { margin: 20px 0; font-size: 16px; font-weight: 600; }
+        .highlight-blue { color: #0b6e99; background-color: #e8f3f9; padding: 2px 6px; border-radius: 3px; }
+        .highlight-red { color: #e11d48; font-weight: bold; background-color: #ffe4e6; padding: 2px 4px; border-radius: 3px; }
+
+        /* 토글(아코디언) 리스트 */
+        details { margin-bottom: 12px; }
+        summary { font-size: 16px; font-weight: 600; cursor: pointer; list-style: none; display: flex; align-items: flex-start; gap: 8px; user-select: none; }
+        summary::-webkit-details-marker { display: none; }
+        summary::before { content: '▶'; font-size: 12px; color: #37352f; transition: transform 0.2s ease; margin-top: 4px; }
+        details[open] summary::before { transform: rotate(90deg); }
+        .details-content { padding-left: 24px; margin-top: 8px; font-size: 15px; color: #37352f; }
+        .details-content ul { margin: 0; padding-left: 20px; color: #37352f; }
+        .details-content li { margin-bottom: 6px; }
+
+        /* 하단 푸터 */
+        .footer { margin-top: 60px; padding-top: 15px; border-top: 1px solid #ededeb; font-size: 13px; color: #999; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <span class="badge">Guide</span>
-        <h1>홈픽 현장 가이드</h1>
-        <p>"지점 · 영업소에서 필요한 처리 방법을 확인하세요."</p>
+<div class="top-banner"></div>
+
+<div class="page-container">
+    <div class="logo-box">홈픽</div>
+    
+    <h1>홈픽 현장 가이드</h1>
+    <p class="subtitle">“지점 · 영업소에서 필요한 처리 방법을 확인하세요.”</p>
+
+    <h2>어떤 상황인가요?</h2>
+    
+    <h3>상황별 안내</h3>
+    <div class="card-grid">
+        <div class="card">📦 물건 수거</div>
+        <div class="card">🚨 취소 · 사고 처리</div>
     </div>
 
-    <div class="section">
-        <div class="faq-box">
-            <h3>📌 자주 찾는 질문 (필독)</h3>
-            <strong>"홈픽 접수 건은 100% 본사신용입니다. 선불/착불이 없습니다."</strong>
+    <!-- 물건 수거 내용 -->
+    <details>
+        <summary>물건값이 50만 원을 넘어요.</summary>
+        <div class="details-content">
+            <ul>
+                <li><strong>정상적으로 수거해 주세요.</strong></li>
+                <li>다만 사고가 났을 때 보상받을 수 있는 금액은 최대 50만 원 입니다.</li>
+            </ul>
         </div>
+    </details>
 
-        <div class="section-title">📦 상황별 안내: 물건수거</div>
-        
-        <div class="accordion">
-            <button class="accordion-btn">접수한 것보다 물건이 크거나 무거워요. <span>▼</span></button>
-            <div class="accordion-content">
-                <p>처리 방법은 세 가지가 있습니다:</p>
-                <ul>
-                    <li>[미집하 사유]를 등록하고, 물건은 수거하지 않습니다. (고객에게 이유를 안내해 주세요.)</li>
-                    <li>로젠 개인예약으로 다시 접수를 안내해 주세요. (고객이 홈픽 접수 취소 후 재접수)</li>
-                    <li>물건을 그대로 수거합니다. <span class="highlight">(단, 운임은 바꿀 수 없습니다.)</span></li>
-                </ul>
-            </div>
+    <details>
+        <summary>처음 출력한 운송장을 잃어버렸어요.</summary>
+        <div class="details-content">
+            <ul>
+                <li>새 운송장을 출력한 뒤 물건을 수거해 주세요.</li>
+            </ul>
         </div>
+    </details>
 
-        <div class="accordion">
-            <button class="accordion-btn">반찬처럼 취급할 수 없는 식품이 접수됐어요. <span>▼</span></button>
-            <div class="accordion-content">
-                <ul>
-                    <li><strong>물건을 수거하지 마세요.</strong></li>
-                    <li>고객에게 홈픽에서 취급할 수 없는 물품이라고 알려주세요.</li>
-                    <li>[미집하 사유]를 등록하고 수거하지 않습니다.</li>
-                </ul>
-            </div>
+    <!-- 취소 사고 처리 내용 -->
+    <details>
+        <summary>수거한 물품이 사고가 났어요.</summary>
+        <div class="details-content">
+            <ul>
+                <li>로젠 개인예약 택배와 같은 절차로 처리합니다.</li>
+                <li>고객은 APP / 홈페이지 / 고객센터를 통해 사고를 접수합니다.</li>
+                <li>집하점은 사고를 확인할 자료를 본사(지사)로 보내주세요.</li>
+            </ul>
         </div>
+    </details>
 
-        <div class="accordion">
-            <button class="accordion-btn">물건값이 50만 원을 넘어요. <span>▼</span></button>
-            <div class="accordion-content">
-                <ul>
-                    <li><strong>정상적으로 수거해 주세요.</strong></li>
-                    <li>다만 사고가 났을 때 보상받을 수 있는 금액은 최대 50만 원임을 안내해 주세요.</li>
-                </ul>
-            </div>
+    <details>
+        <summary>고객이 취소하면 언제 환불되나요?</summary>
+        <div class="details-content">
+            <ul>
+                <li>고객이 취소 요청 후 48시간 이상 픽업/배송 흐름이 없으면 자동 취소/환불 처리됩니다.</li>
+            </ul>
         </div>
+    </details>
 
-        <div class="accordion">
-            <button class="accordion-btn">처음 출력한 운송장을 잃어버렸어요. <span>▼</span></button>
-            <div class="accordion-content">
-                <ul>
-                    <li>새 운송장을 출력한 뒤 물건을 수거해 주세요.</li>
-                </ul>
-            </div>
+    <h2>자주 찾는 질문</h2>
+    
+    <div class="highlight-wrap">
+        📌 <span class="highlight-blue">“홈픽 접수 건은 100% 본사신용입니다. 선불/착불이 없습니다.”</span>
+    </div>
+
+    <details>
+        <summary>“고객에게 택배비를 받아야 하나요?”</summary>
+        <div class="details-content">
+            <ul>
+                <li><strong>보내는 분과 받는 분 모두에게 택배비를 받지 마세요.</strong></li>
+                <li>홈픽 접수 건은 [본사신용]으로 처리합니다.</li>
+                <li>집하 · 배송 수수료는 자동으로 정산됩니다.</li>
+            </ul>
         </div>
+    </details>
 
-        <div class="accordion">
-            <button class="accordion-btn">고객에게 택배비를 받아야 하나요? <span>▼</span></button>
-            <div class="accordion-content">
-                <ul>
-                    <li><strong>보내는 분과 받는 분 모두에게 택배비를 받지 마세요.</strong></li>
-                    <li>홈픽 접수 건은 [본사신용]으로 처리합니다.</li>
-                    <li>집하 · 배송 수수료는 자동으로 정산됩니다.</li>
-                </ul>
-            </div>
+    <details>
+        <summary>“접수한 것보다 물건이 크거나 무거워요.”</summary>
+        <div class="details-content">
+            <p>처리 방법은 세 가지 방법이 있고, 다음과 같아요.</p>
+            <ul>
+                <li>고객에게 이유를 안내해 주세요. [미집하 사유]를 등록하고, 물건은 수거하지 않습니다.</li>
+                <li>로젠 개인예약으로 다시 접수를 안내해 주세요. (고객이 홈픽 접수 취소 후 재접수)</li>
+                <li>물건을 그대로 수거합니다. <span class="highlight-red">(단, 운임은 바꿀 수 없습니다.)</span></li>
+            </ul>
         </div>
+    </details>
 
-        <div class="section-title" style="margin-top: 20px;">🚨 상황별 안내: 취소·사고 처리</div>
-
-        <div class="accordion">
-            <button class="accordion-btn">수거한 물품이 사고가 났어요. <span>▼</span></button>
-            <div class="accordion-content">
-                <ul>
-                    <li>로젠 개인예약 택배와 같은 절차로 처리합니다.</li>
-                    <li>고객은 APP / 홈페이지 / 고객센터를 통해 사고를 접수합니다.</li>
-                    <li>집하점은 사고를 확인할 자료를 본사(지사)로 보내주세요.</li>
-                </ul>
-            </div>
+    <details>
+        <summary>“반찬처럼 취급할 수 없는 식품이 접수됐어요.”</summary>
+        <div class="details-content">
+            <ul>
+                <li><strong>물건을 수거하지 마세요.</strong></li>
+                <li>고객에게 홈픽에서 취급할 수 없는 물품이라고 알려주세요.</li>
+                <li>[미집하 사유]를 등록하고, 물건은 수거하지 않습니다.</li>
+            </ul>
         </div>
+    </details>
 
-        <div class="accordion">
-            <button class="accordion-btn">고객이 취소하면 언제 환불되나요? <span>▼</span></button>
-            <div class="accordion-content">
-                <ul>
-                    <li>고객이 취소 요청 후 48시간 이상 픽업/배송 흐름이 없으면 자동 취소/환불 처리됩니다.</li>
-                </ul>
-            </div>
-        </div>
+    <div class="footer">
+        최종 수정 2026.10.27 (마케팅기획팀)
     </div>
 </div>
-
-<script>
-    const accordions = document.querySelectorAll('.accordion-btn');
-    accordions.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const content = this.nextElementSibling;
-            const isOpen = content.classList.contains('open');
-            
-            // 모든 아코디언 닫기 (선택 사항)
-            document.querySelectorAll('.accordion-content').forEach(item => {
-                item.classList.remove('open');
-            });
-
-            // 클릭한 것만 열기
-            if (!isOpen) {
-                content.classList.add('open');
-            }
-        });
-    });
-</script>
 
 </body>
 </html>
