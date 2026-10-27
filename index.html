@@ -40,13 +40,13 @@
         .accordion-content { padding: 0 15px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: #fff; }
         .accordion-content.open { padding: 15px; max-height: 800px; border-top: 1px solid #e5e7eb; }
         
-        /* 아코디언 내부 텍스트 디자인 (요청하신 상위/하위 구성) */
-        .accordion-content p { border-left: 3px solid #3b82f6; color: #3b82f6; padding-left: 12px; margin: 10px 0 15px 0; font-size: 15px; }
+        /* 아코디언 내부 텍스트 디자인 (핵심 답변 강조 및 리스트 구성) */
+        .accordion-content p { border-left: 3px solid #3b82f6; color: #3b82f6; padding-left: 12px; margin: 10px 0 15px 0; font-size: 16px; font-weight: bold; }
         .accordion-content ul { margin: 0; padding-left: 25px; list-style-type: disc; }
         .accordion-content li { margin-bottom: 8px; font-size: 15px; color: #333; }
         
         /* 강조 텍스트 및 박스 */
-        .highlight { color: #ef4444; /* 배경색 없이 빨간색 글씨만 적용 */ }
+        .highlight { color: #ef4444; }
         .faq-box { background: #fffbeb; border: 1px solid #fcd34d; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
         .faq-box-text { color: #1e3a8a; font-weight: bold; font-size: 15px; }
 
@@ -88,8 +88,8 @@
         <div class="accordion">
             <button class="accordion-btn">“고객에게 택배비를 받아야 하나요?” <span>▼</span></button>
             <div class="accordion-content">
+                <p>보내는 분과 받는 분 모두에게 택배비를 받지 마세요.</p>
                 <ul>
-                    <li>보내는 분과 받는 분 모두에게 택배비를 받지 마세요.</li>
                     <li>홈픽 접수 건은 [본사신용]으로 처리합니다.</li>
                     <li>집하 · 배송 수수료는 자동으로 정산됩니다.</li>
                 </ul>
@@ -111,8 +111,8 @@
         <div class="accordion">
             <button class="accordion-btn">“반찬처럼 취급할 수 없는 식품이 접수됐어요.” <span>▼</span></button>
             <div class="accordion-content">
+                <p>물건을 수거하지 마세요.</p>
                 <ul>
-                    <li>물건을 수거하지 마세요.</li>
                     <li>고객에게 홈픽에서 취급할 수 없는 물품이라고 알려주세요.</li>
                     <li>[미집하 사유]를 등록하고, 물건은 수거하지 않습니다.</li>
                 </ul>
@@ -140,8 +140,8 @@
         <div class="accordion">
             <button class="accordion-btn">“반찬처럼 취급할 수 없는 식품이 접수됐어요.” <span>▼</span></button>
             <div class="accordion-content">
+                <p>물건을 수거하지 마세요.</p>
                 <ul>
-                    <li>물건을 수거하지 마세요.</li>
                     <li>고객에게 홈픽에서 취급할 수 없는 물품이라고 알려주세요.</li>
                     <li>[미집하 사유]를 등록하고, 물건은 수거하지 않습니다.</li>
                 </ul>
@@ -151,8 +151,8 @@
         <div class="accordion">
             <button class="accordion-btn">“물건값이 50만 원을 넘어요.” <span>▼</span></button>
             <div class="accordion-content">
+                <p>정상적으로 수거해 주세요.</p>
                 <ul>
-                    <li>정상적으로 수거해 주세요.</li>
                     <li>다만 사고가 났을 때 보상받을 수 있는 금액은 최대 50만 원 입니다.</li>
                 </ul>
             </div>
@@ -161,9 +161,7 @@
         <div class="accordion">
             <button class="accordion-btn">“처음 출력한 운송장을 잃어버렸어요.” <span>▼</span></button>
             <div class="accordion-content">
-                <ul>
-                    <li>새 운송장을 출력한 뒤 물건을 수거해 주세요.</li>
-                </ul>
+                <p>새 운송장을 출력한 뒤 물건을 수거해 주세요.</p>
             </div>
         </div>
     </div>
@@ -176,8 +174,8 @@
         <div class="accordion">
             <button class="accordion-btn">“수거한 물품이 사고가 났어요.” <span>▼</span></button>
             <div class="accordion-content">
+                <p>로젠 개인예약 택배와 같은 절차로 처리합니다.</p>
                 <ul>
-                    <li>로젠 개인예약 택배와 같은 절차로 처리합니다.</li>
                     <li>고객은 APP / 홈페이지 / 고객센터를 통해 사고를 접수합니다.</li>
                     <li>집하점은 사고를 확인할 자료를 본사(지사)로 보내주세요.</li>
                 </ul>
@@ -187,9 +185,7 @@
         <div class="accordion">
             <button class="accordion-btn">“고객이 취소하면 언제 환불되나요?” <span>▼</span></button>
             <div class="accordion-content">
-                <ul>
-                    <li>고객이 취소 요청 후 48시간 이상 픽업/배송 흐름이 없으면 자동 취소/환불 처리됩니다.</li>
-                </ul>
+                <p>고객이 취소 요청 후 48시간 이상 픽업/배송 흐름이 없으면 자동 취소/환불 처리되요.</p>
             </div>
         </div>
     </div>
