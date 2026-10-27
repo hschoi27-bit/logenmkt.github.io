@@ -1,296 +1,143 @@
-// Toggle open class
-            if (parent.classList.contains('open')) {
-                parent.classList.remove('open');
-                content.classList.remove('py-4', 'open');
-            } else {
-                // Optional: Close all other accordions (uncomment below if you want this behavior)
-                // document.querySelectorAll('.accordion-ite<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>홈픽 현장 가이드</title>
-    <!-- 폰트 적용 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Noto Sans KR"', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; }
-        .accordion-content {
-            transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
-            max-height: 0;
-            overflow: hidden;
-        }
-        .accordion-content.open {
-            max-height: 500px; /* 충분히 큰 값 지정 */
-        }
-        .icon-rotate { transition: transform 0.3s ease; }
-        .open .icon-rotate { transform: rotate(180deg); }
+        body { font-family: 'Malgun Gothic', sans-serif; line-height: 1.6; background-color: #f4f7f6; margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; background: #fff; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; }
+        .header { background: #1a56db; color: #fff; padding: 20px; text-align: center; }
+        .header h1 { margin: 0 0 10px 0; font-size: 24px; }
+        .header p { margin: 0; font-size: 14px; opacity: 0.9; }
+        .badge { display: inline-block; background: #ffeb3b; color: #000; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 10px; }
+        .section { padding: 20px; }
+        .section-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #1a56db; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px; }
+        .accordion { border: 1px solid #e5e7eb; border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+        .accordion-btn { width: 100%; text-align: left; background: #f9fafb; border: none; padding: 15px; font-size: 15px; font-weight: bold; cursor: pointer; outline: none; display: flex; justify-content: space-between; align-items: center; }
+        .accordion-btn:hover { background: #f3f4f6; }
+        .accordion-content { padding: 0 15px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: #fff; }
+        .accordion-content.open { padding: 15px; max-height: 500px; border-top: 1px solid #e5e7eb; }
+        ul { margin: 0; padding-left: 20px; }
+        li { margin-bottom: 8px; font-size: 14px; }
+        .highlight { color: #e11d48; font-weight: bold; background-color: #ffe4e6; padding: 2px 5px; border-radius: 3px; }
+        .faq-box { background: #fffbeb; border: 1px solid #fcd34d; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        .faq-box h3 { margin: 0 0 10px 0; color: #b45309; font-size: 16px; text-align: center; }
     </style>
 </head>
-<body class="text-gray-800 antialiased min-h-screen pb-20">
+<body>
 
-    <!-- Header Section -->
-    <header class="bg-brand-600 text-white rounded-b-[2.5rem] shadow-md pt-12 pb-14 px-6 relative overflow-hidden max-w-4xl mx-auto">
-        <div class="absolute top-[-50px] right-[-50px] w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
-        <div class="absolute bottom-[-20px] left-[-20px] w-32 h-32 bg-brand-400 opacity-20 rounded-full blur-xl"></div>
-        <div class="relative z-10 text-center">
-            <span class="inline-block py-1 px-3 rounded-full bg-brand-700 text-brand-50 text-sm font-semibold mb-4 tracking-wide shadow-inner">Guide</span>
-            <h1 class="text-3xl sm:text-4xl font-extrabold mb-3 tracking-tight">홈픽 현장 가이드</h1>
-            <p class="text-brand-100 text-base sm:text-lg font-medium opacity-90">"지점 · 영업소에서 필요한 처리 방법을 확인하세요.”</p>
+<div class="container">
+    <div class="header">
+        <span class="badge">Guide</span>
+        <h1>홈픽 현장 가이드</h1>
+        <p>"지점 · 영업소에서 필요한 처리 방법을 확인하세요."</p>
+    </div>
+
+    <div class="section">
+        <div class="faq-box">
+            <h3>📌 자주 찾는 질문 (필독)</h3>
+            <strong>"홈픽 접수 건은 100% 본사신용입니다. 선불/착불이 없습니다."</strong>
         </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 -mt-6 relative z-20">
+        <div class="section-title">📦 상황별 안내: 물건수거</div>
         
-        <!-- 가장 중요한 강조 문구 (FAQ 하이라이트) -->
-        <div class="bg-gradient-to-r from-amber-100 to-yellow-50 border border-yellow-200 rounded-2xl p-6 shadow-sm mb-10 flex flex-col sm:flex-row items-start sm:items-center gap-4 animate-fade-in-up">
-            <div class="bg-white p-3 rounded-full shadow-sm text-3xl shrink-0">📌</div>
-            <div>
-                <h2 class="text-xl sm:text-2xl font-black text-gray-900 mb-1 leading-tight">홈픽 접수 건은 100% <span class="text-brand-600">본사신용</span>입니다.</h2>
-                <p class="text-yellow-800 font-bold text-sm sm:text-base bg-yellow-200/50 inline-block px-2 py-1 rounded">선불/착불이 없습니다! 절대 고객에게 택배비를 받지 마세요.</p>
+        <div class="accordion">
+            <button class="accordion-btn">접수한 것보다 물건이 크거나 무거워요. <span>▼</span></button>
+            <div class="accordion-content">
+                <p>처리 방법은 세 가지가 있습니다:</p>
+                <ul>
+                    <li>[미집하 사유]를 등록하고, 물건은 수거하지 않습니다. (고객에게 이유를 안내해 주세요.)</li>
+                    <li>로젠 개인예약으로 다시 접수를 안내해 주세요. (고객이 홈픽 접수 취소 후 재접수)</li>
+                    <li>물건을 그대로 수거합니다. <span class="highlight">(단, 운임은 바꿀 수 없습니다.)</span></li>
+                </ul>
             </div>
         </div>
 
-        <!-- Section 1: 상황별 안내 -->
-        <section class="mb-12">
-            <div class="flex items-center gap-3 mb-6 px-2">
-                <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center text-xl font-bold shadow-sm">💡</div>
-                <h2 class="text-2xl font-bold text-gray-800">어떤 상황인가요? <span class="text-lg font-medium text-gray-500 ml-2">상황별 안내</span></h2>
+        <div class="accordion">
+            <button class="accordion-btn">반찬처럼 취급할 수 없는 식품이 접수됐어요. <span>▼</span></button>
+            <div class="accordion-content">
+                <ul>
+                    <li><strong>물건을 수거하지 마세요.</strong></li>
+                    <li>고객에게 홈픽에서 취급할 수 없는 물품이라고 알려주세요.</li>
+                    <li>[미집하 사유]를 등록하고 수거하지 않습니다.</li>
+                </ul>
             </div>
+        </div>
 
-            <!-- Category: 물건 수거 -->
-            <div class="mb-8">
-                <h3 class="text-lg font-bold text-brand-700 mb-4 px-2 flex items-center gap-2">
-                    <span>📦</span> 물건 수거 시
-                </h3>
-                <div class="space-y-3" id="accordion-group-1">
-                    <!-- Item 1 -->
-                    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden accordion-item">
-                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors" onclick="toggleAccordion(this)">
-                            <span class="font-bold text-gray-800 text-base sm:text-lg">"접수한 것보다 물건이 크거나 무거워요."</span>
-                            <svg class="w-5 h-5 text-gray-400 icon-rotate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="accordion-content bg-gray-50/50 border-t border-gray-100 px-6">
-                            <div class="py-4 text-gray-700 space-y-3 text-sm sm:text-base">
-                                <p class="font-medium text-brand-600 mb-2">처리 방법은 세 가지가 있으며, 다음과 같습니다.</p>
-                                <ul class="list-disc pl-5 space-y-2">
-                                    <li><strong>수거 불가:</strong> [미집하 사유]를 등록하고, 물건은 수거하지 않습니다. (고객에게 이유를 안내해 주세요.)</li>
-                                    <li><strong>재접수 안내:</strong> 로젠 개인예약으로 다시 접수를 안내해 주세요. (고객에게 홈픽 접수 취소 요청 후 로젠 개인예약 재접수 유도)</li>
-                                    <li><strong>그대로 수거:</strong> 물건을 그대로 수거합니다. <br><span class="inline-block mt-1 bg-red-100 text-red-600 font-bold px-2 py-0.5 rounded">(단, 운임은 바꿀 수 없습니다.)</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Item 2 -->
-                    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden accordion-item">
-                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors" onclick="toggleAccordion(this)">
-                            <span class="font-bold text-gray-800 text-base sm:text-lg">"반찬처럼 취급할 수 없는 식품이 접수됐어요."</span>
-                            <svg class="w-5 h-5 text-gray-400 icon-rotate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="accordion-content bg-gray-50/50 border-t border-gray-100 px-6">
-                            <div class="py-4 text-gray-700 space-y-2 text-sm sm:text-base">
-                                <p class="font-bold text-red-500 mb-2">물건을 수거하지 마세요!</p>
-                                <ul class="list-disc pl-5 space-y-1">
-                                    <li>고객에게 홈픽에서 취급할 수 없는 물품이라고 알려주세요.</li>
-                                    <li>[미집하 사유]를 등록하고, 물건은 수거하지 않습니다.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Item 3 -->
-                    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden accordion-item">
-                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors" onclick="toggleAccordion(this)">
-                            <span class="font-bold text-gray-800 text-base sm:text-lg">"물건값이 50만 원을 넘어요."</span>
-                            <svg class="w-5 h-5 text-gray-400 icon-rotate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="accordion-content bg-gray-50/50 border-t border-gray-100 px-6">
-                            <div class="py-4 text-gray-700 text-sm sm:text-base">
-                                <p class="font-bold text-brand-600 mb-2">정상적으로 수거해 주세요.</p>
-                                <p class="text-gray-600 bg-gray-100 p-3 rounded-lg text-sm">다만, 사고가 났을 때 보상받을 수 있는 금액은 <strong>최대 50만 원</strong>입니다. (고객 안내 필요)</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Item 4 -->
-                    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden accordion-item">
-                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors" onclick="toggleAccordion(this)">
-                            <span class="font-bold text-gray-800 text-base sm:text-lg">"처음 출력한 운송장을 잃어버렸어요."</span>
-                            <svg class="w-5 h-5 text-gray-400 icon-rotate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="accordion-content bg-gray-50/50 border-t border-gray-100 px-6">
-                            <div class="py-4 text-gray-700 text-sm sm:text-base">
-                                <p>새 운송장을 출력한 뒤 물건을 수거해 주세요.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Item 5 -->
-                    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden accordion-item">
-                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors" onclick="toggleAccordion(this)">
-                            <span class="font-bold text-gray-800 text-base sm:text-lg">"고객에게 택배비를 받아야 하나요?"</span>
-                            <svg class="w-5 h-5 text-gray-400 icon-rotate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="accordion-content bg-gray-50/50 border-t border-gray-100 px-6">
-                            <div class="py-4 text-gray-700 space-y-2 text-sm sm:text-base">
-                                <p class="font-bold text-red-500 mb-2">보내는 분과 받는 분 모두에게 택배비를 받지 마세요!</p>
-                                <ul class="list-disc pl-5 space-y-1">
-                                    <li>홈픽 접수 건은 <strong>[본사신용]</strong>으로 처리합니다.</li>
-                                    <li>집하 · 배송 수수료는 자동으로 정산됩니다.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="accordion">
+            <button class="accordion-btn">물건값이 50만 원을 넘어요. <span>▼</span></button>
+            <div class="accordion-content">
+                <ul>
+                    <li><strong>정상적으로 수거해 주세요.</strong></li>
+                    <li>다만 사고가 났을 때 보상받을 수 있는 금액은 최대 50만 원임을 안내해 주세요.</li>
+                </ul>
             </div>
+        </div>
 
-            <!-- Category: 취소/사고 처리 -->
-            <div>
-                <h3 class="text-lg font-bold text-brand-700 mb-4 px-2 flex items-center gap-2">
-                    <span>🚨</span> 취소 · 사고 처리 시
-                </h3>
-                <div class="space-y-3" id="accordion-group-2">
-                    <!-- Item 1 -->
-                    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden accordion-item">
-                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors" onclick="toggleAccordion(this)">
-                            <span class="font-bold text-gray-800 text-base sm:text-lg">"수거한 물품이 사고가 났어요."</span>
-                            <svg class="w-5 h-5 text-gray-400 icon-rotate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="accordion-content bg-gray-50/50 border-t border-gray-100 px-6">
-                            <div class="py-4 text-gray-700 space-y-2 text-sm sm:text-base">
-                                <p class="font-medium text-brand-600 mb-2">로젠 개인예약 택배와 같은 절차로 처리합니다.</p>
-                                <ul class="list-decimal pl-5 space-y-1">
-                                    <li>고객은 APP / 홈페이지 / 고객센터를 통해 사고를 접수합니다.</li>
-                                    <li>집하점은 <strong>사고를 확인할 자료를 본사(지사)로 전송</strong>해 주세요.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Item 2 -->
-                    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden accordion-item">
-                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors" onclick="toggleAccordion(this)">
-                            <span class="font-bold text-gray-800 text-base sm:text-lg">"고객이 취소하면 언제 환불되나요?"</span>
-                            <svg class="w-5 h-5 text-gray-400 icon-rotate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="accordion-content bg-gray-50/50 border-t border-gray-100 px-6">
-                            <div class="py-4 text-gray-700 text-sm sm:text-base">
-                                <p class="bg-gray-100 p-3 rounded-lg">고객이 취소 요청 후 <strong>48시간 이상 픽업/배송 흐름이 없으면</strong> 자동 취소/환불 처리됩니다.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="accordion">
+            <button class="accordion-btn">처음 출력한 운송장을 잃어버렸어요. <span>▼</span></button>
+            <div class="accordion-content">
+                <ul>
+                    <li>새 운송장을 출력한 뒤 물건을 수거해 주세요.</li>
+                </ul>
             </div>
-        </section>
+        </div>
 
-        <hr class="border-gray-200 my-10">
-
-        <!-- Section 2: 자주 찾는 질문 -->
-        <section>
-            <div class="flex items-center gap-3 mb-6 px-2">
-                <div class="w-10 h-10 bg-teal-100 text-teal-600 rounded-xl flex items-center justify-center text-xl font-bold shadow-sm">❓</div>
-                <h2 class="text-2xl font-bold text-gray-800">자주 찾는 질문 <span class="text-lg font-medium text-gray-500 ml-2">FAQ 종합</span></h2>
+        <div class="accordion">
+            <button class="accordion-btn">고객에게 택배비를 받아야 하나요? <span>▼</span></button>
+            <div class="accordion-content">
+                <ul>
+                    <li><strong>보내는 분과 받는 분 모두에게 택배비를 받지 마세요.</strong></li>
+                    <li>홈픽 접수 건은 [본사신용]으로 처리합니다.</li>
+                    <li>집하 · 배송 수수료는 자동으로 정산됩니다.</li>
+                </ul>
             </div>
+        </div>
+
+        <div class="section-title" style="margin-top: 20px;">🚨 상황별 안내: 취소·사고 처리</div>
+
+        <div class="accordion">
+            <button class="accordion-btn">수거한 물품이 사고가 났어요. <span>▼</span></button>
+            <div class="accordion-content">
+                <ul>
+                    <li>로젠 개인예약 택배와 같은 절차로 처리합니다.</li>
+                    <li>고객은 APP / 홈페이지 / 고객센터를 통해 사고를 접수합니다.</li>
+                    <li>집하점은 사고를 확인할 자료를 본사(지사)로 보내주세요.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <button class="accordion-btn">고객이 취소하면 언제 환불되나요? <span>▼</span></button>
+            <div class="accordion-content">
+                <ul>
+                    <li>고객이 취소 요청 후 48시간 이상 픽업/배송 흐름이 없으면 자동 취소/환불 처리됩니다.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const accordions = document.querySelectorAll('.accordion-btn');
+    accordions.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            const isOpen = content.classList.contains('open');
             
-            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-gray-200">
-                <div class="space-y-6">
-                    
-                    <!-- FAQ 1 -->
-                    <div class="border-b border-gray-100 pb-6 last:border-0 last:pb-0">
-                        <h4 class="font-bold text-lg text-gray-900 mb-2 flex items-start gap-2">
-                            <span class="text-brand-500 font-black">Q.</span> 
-                            고객에게 택배비를 받아야 하나요?
-                        </h4>
-                        <div class="pl-6 text-gray-700 text-sm sm:text-base space-y-1">
-                            <p class="font-bold text-red-500">보내는 분과 받는 분 모두에게 택배비를 받지 마세요.</p>
-                            <p class="text-gray-600">- 홈픽 접수 건은 <span class="font-semibold text-brand-600">[본사신용]</span>으로 처리합니다.</p>
-                            <p class="text-gray-600">- 집하 · 배송 수수료는 자동으로 정산됩니다.</p>
-                        </div>
-                    </div>
+            // 모든 아코디언 닫기 (선택 사항)
+            document.querySelectorAll('.accordion-content').forEach(item => {
+                item.classList.remove('open');
+            });
 
-                    <!-- FAQ 2 -->
-                    <div class="border-b border-gray-100 pb-6 last:border-0 last:pb-0">
-                        <h4 class="font-bold text-lg text-gray-900 mb-2 flex items-start gap-2">
-                            <span class="text-brand-500 font-black">Q.</span> 
-                            접수한 것보다 물건이 크거나 무거워요.
-                        </h4>
-                        <div class="pl-6 text-gray-700 text-sm sm:text-base space-y-3">
-                            <p class="font-medium">처리 방법은 세 가지 방법이 있고, 다음과 같아요.</p>
-                            <ul class="list-disc pl-5 space-y-2 text-gray-600">
-                                <li>고객에게 이유를 안내해 주세요. <strong>[미집하 사유]</strong>를 등록하고, 물건은 수거하지 않습니다.</li>
-                                <li><strong>로젠 개인예약</strong>으로 다시 접수를 안내해주세요. 고객에게 홈픽 접수를 취소 요청 후 로젠 개인예약으로 다시 접수합니다.</li>
-                                <li>
-                                    물건을 그대로 수거합니다. <br>
-                                    <span class="inline-block mt-1 bg-red-100 border border-red-200 text-red-600 font-extrabold px-3 py-1 rounded-md shadow-sm">단, 운임은 바꿀 수 없습니다.</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 3 -->
-                    <div class="border-b border-gray-100 pb-6 last:border-0 last:pb-0">
-                        <h4 class="font-bold text-lg text-gray-900 mb-2 flex items-start gap-2">
-                            <span class="text-brand-500 font-black">Q.</span> 
-                            반찬처럼 취급할 수 없는 식품이 접수됐어요.
-                        </h4>
-                        <div class="pl-6 text-gray-700 text-sm sm:text-base space-y-2">
-                            <p class="font-bold text-red-500">물건을 수거하지 마세요.</p>
-                            <ul class="list-disc pl-5 text-gray-600 space-y-1">
-                                <li>고객에게 홈픽에서 취급할 수 없는 물품이라고 알려주세요.</li>
-                                <li><strong>[미집하 사유]</strong>를 등록하고, 물건은 수거하지 않습니다.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer for visual balance -->
-    <footer class="text-center text-gray-400 text-sm mt-16 pb-8">
-        &copy; 2026 Homepick & Logistics Guide
-    </footer>
-
-    <!-- Script for Accordion Functionality -->
-    <script>
-        function toggleAccordion(button) {
-            const content = button.nextElementSibling;
-            const parent = button.parentElement;m').forEach(item => {
-                //     item.classList.remove('open');
-                //     item.querySelector('.accordion-content').classList.remove('open');
-                // });
-
-                parent.classList.add('open');
+            // 클릭한 것만 열기
+            if (!isOpen) {
                 content.classList.add('open');
             }
-        }
-    </script>
+        });
+    });
+</script>
+
 </body>
 </html>
